@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Anggie 💖</title>
+  <style>
+    body {
+      background-color: #000c3d;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    .corazon {
+      position: relative;
+      width: 800px;
+      height: 700px;
+    }
+    .palabra {
+      position: absolute;
+      color: #ff4d88;
+      font-size: 14px;
+      text-shadow: 0 0 6px #ff4d88;
+      transform: translate(-50%, -50%);
+      animation: latido 2s infinite;
+    }
+    .central {
+      font-size: 38px;
+      color: white;
+      text-shadow: 0 0 15px white;
+      animation: latido 1.5s infinite;
+    }
+    @keyframes latido {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="corazon" id="corazon">
+    <div class="palabra central" style="top: 50%; left: 50%;">Anggie</div>
+  </div>
+
+  <script>
+    const palabras = ["Te amo", "Amor", "Feliz", "Vida", "Cielo", "Linda", "Dulzura", "Besos", "Ternura", "Risa", "Mi sol", "Bella", "Contigo"];
+    const corazon = document.getElementById('corazon');
+
+    for (let i = 0; i < 1000; i++) { // Solo borde
+      const t = Math.PI * (i / 500); // 0 a 2PI (ajustado)
+
+      const x = 16 * Math.pow(Math.sin(t), 3);
+      const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+
+      const left = 50 + x * 2.5; // Ajuste horizontal
+      const top = 50 - y * 2.5;  // Ajuste vertical
+
+      const palabra = document.createElement('div');
+      palabra.className = 'palabra';
+      palabra.style.left = left + '%';
+      palabra.style.top = top + '%';
+      palabra.innerText = palabras[Math.floor(Math.random() * palabras.length)];
+      corazon.appendChild(palabra);
+    }
+  </script>
+</body>
+</html>
